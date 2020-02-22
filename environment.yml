@@ -4,7 +4,7 @@ channels:
 dependencies:
   - numpy
   - matplotlib
-  - sympy
+  - pillow
   - ipywidgets
   - bqplot
   - notebook
