@@ -1,0 +1,10 @@
+name: Julia_sets
+channels:
+  - conda-forge
+dependencies:
+  - numpy
+  - matplotlib
+  - sympy
+  - ipywidgets
+  - bqplot
+  - notebook
