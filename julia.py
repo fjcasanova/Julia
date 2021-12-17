@@ -78,7 +78,7 @@ def square_orbit(x0, y0):
     theta = np.linspace(0, 2.*np.pi, 1000)
     x = np.cos(theta)
     y = np.sin(theta)
-    circle = bqplot.Lines(x=x, y=y, scales={'x': sc_x, 'y': sc_y}, colors=['black'])
+    #circle = bqplot.Lines(x=x, y=y, scales={'x': sc_x, 'y': sc_y}, colors=['black'])
     lin = bqplot.Lines(x=[], y=[], scales={'x': sc_x, 'y': sc_y}, colors=['black'], stroke_width=1)
 
     def update_line(change=None):
