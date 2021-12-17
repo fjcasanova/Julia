@@ -97,7 +97,9 @@ def square_orbit(x0, y0):
     ax_x = bqplot.Axis(scale=sc_x, offset=dict(value=0.5), grid_lines='none')
     ax_y = bqplot.Axis(scale=sc_y, orientation='vertical', offset=dict(value=0.5), grid_lines='none')
 
-    fig = bqplot.Figure(marks=[scatt, lin, circle, z_point, z_label], axes=[ax_x, ax_y],
+    #fig = bqplot.Figure(marks=[scatt, lin, circle, z_point, z_label], axes=[ax_x, ax_y],
+                 min_aspect_ratio=1, max_aspect_ratio=1)
+    fig = bqplot.Figure(marks=[scatt, lin, z_point, z_label], axes=[ax_x, ax_y],
                  min_aspect_ratio=1, max_aspect_ratio=1)
     fig.layout.height = '800px'
     return fig
