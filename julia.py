@@ -5,21 +5,21 @@ import matplotlib.image as mpimg
 import bqplot
 
 def representation_complexe():
-    real = widgets.BoundedFloatText(
+    real = display(widgets.BoundedFloatText(
         value=1,
         min=-2.0,
         max=2.0,
         step=0.1,
         disabled=True
-    )
+    ))
 
-    imag = widgets.BoundedFloatText(
+    imag = display(widgets.BoundedFloatText(
         value=1,
         min=-2.0,
         max=2.0,
         step=0.1,
         disabled=True
-    )
+    ))
 
     sc_x = bqplot.LinearScale(min=-2, max=2)
     sc_y = bqplot.LinearScale(min=-2, max=2)
@@ -33,7 +33,7 @@ def representation_complexe():
     fig = bqplot.Figure(marks=[z_point], axes=[ax_x, ax_y],
              min_aspect_ratio=1, max_aspect_ratio=1)
 
-    complex_z = widgets.HBox([widgets.Label('$z = $'), real, widgets.Label('$ + $'), imag, widgets.Label('$i$')])
+    complex_z = display(widgets.HBox([widgets.Label('$z = $'), real, widgets.Label('$ + $'), imag, widgets.Label('$i$')]))
 
     def update_z(change=None):
         real.value = z_point.x[0]
@@ -58,7 +58,7 @@ def orbit(z, c =0, eps=1e-6, lim=1e5):
         ite += 1
     return np.asarray(out)
 
-def square_orbit(x0, y0):
+def square_orbit(x0, y0, cercle = False):
     sc_x = bqplot.LinearScale(min=-1.2, max=1.2)
     sc_y = bqplot.LinearScale(min=-1.2, max=1.2)
 
@@ -96,11 +96,12 @@ def square_orbit(x0, y0):
     z_point.observe(update_line, names=['y'])
     ax_x = bqplot.Axis(scale=sc_x, offset=dict(value=0.5), grid_lines='none')
     ax_y = bqplot.Axis(scale=sc_y, orientation='vertical', offset=dict(value=0.5), grid_lines='none')
-
-    #fig = bqplot.Figure(marks=[scatt, lin, circle, z_point, z_label], axes=[ax_x, ax_y],
-                 #min_aspect_ratio=1, max_aspect_ratio=1)
-    fig = bqplot.Figure(marks=[scatt, lin, z_point, z_label], axes=[ax_x, ax_y],
-                 min_aspect_ratio=1, max_aspect_ratio=1)
+    if cercle == True :
+        circle = bqplot.Lines(x=x, y=y, scales={'x': sc_x, 'y': sc_y}, colors=['black'])
+        fig = bqplot.Figure(marks=[scatt, lin, circle, z_point, z_label], axes=[ax_x, ax_y], min_aspect_ratio=1, max_aspect_ratio=1)
+    else :
+        fig = bqplot.Figure(marks=[scatt, lin, z_point, z_label], axes=[ax_x, ax_y],
+                    min_aspect_ratio=1, max_aspect_ratio=1)
     fig.layout.height = '800px'
     return fig
 
