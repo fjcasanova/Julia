@@ -161,7 +161,7 @@ def julia_interactive(couleur_1=[59,67,113], couleur_2=[243,144,79],
     )
     n_slider = widgets.IntSlider(value=100,min=10,max=200,step=10,
                                  description='n_max',continuous_update=True)
-    N_slider = widgets.IntSlider(value=600,min=100,max=1000,step=50,
+    N_slider = widgets.IntSlider(value=300,min=100,max=1000,step=50,
                                  description='N',continuous_update=True)
     save_button = widgets.Button(description="Enregistrer")
 
